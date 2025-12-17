@@ -4,7 +4,6 @@ from unittest.mock import Mock, patch, MagicMock
 import sys
 import os
 
-# Füge den stations Pfad hinzu
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'stations'))
 
 
@@ -68,11 +67,9 @@ class TestWeatherStationLogic:
             "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
         }
         
-        # Sollte keine Exception werfen
         json_str = json.dumps(data)
         assert isinstance(json_str, str)
         
-        # Sollte wieder zurück deserialisiert werden können
         data_back = json.loads(json_str)
         assert data_back == data
 
@@ -140,5 +137,4 @@ class TestStationIntegration:
         test_data = {"test": "data"}
         client.publish("weather", json.dumps(test_data))
         
-        # Prüfe dass publish aufgerufen wurde
         mock_client.publish.assert_called_once()
