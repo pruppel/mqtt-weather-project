@@ -31,3 +31,4 @@ while True:
     client.publish(topic, json.dumps(data))
     print(f"[{station_id}] Published: {data}")
     time.sleep(interval)
+    
